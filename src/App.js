@@ -1,14 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { increment } from './features/counter/counterSlice';
+import Header from './components/Header/Header';
+import './App.css';
 
 function App() {
-  const value = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
   return (
-    <div>
-      <div>{value}</div>
-      <button onClick={() => dispatch(increment())}>Увеличить</button>
+    <div className="app">
+      <Header />
     </div>
   );
 }
