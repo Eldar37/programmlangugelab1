@@ -13,3 +13,25 @@ body {
   min-height: 100vh;
   padding-bottom: 24px;
 }
+
+.counter {
+  width: min(1100px, 92%);
+  margin: 24px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter__value {
+  min-width: 36px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.counter__button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 15px;
+  cursor: pointer;
+}
