@@ -3,9 +3,9 @@
   margin: 24px auto 0;
   padding: 16px 24px;
   border-radius: 14px;
-  background: linear-gradient(120deg, #10263f 0%, #1e3f5d 55%, #2f5f85 100%);
-  color: #ffffff;
-  box-shadow: 0 10px 28px rgba(16, 38, 63, 0.3);
+  background: linear-gradient(120deg, #3f2a10 0%, #7a4e1f 58%, #bd7a2a 100%);
+  color: #fffdf8;
+  box-shadow: 0 10px 28px rgba(63, 42, 16, 0.28);
 }
 
 .header__row {
@@ -29,7 +29,7 @@
 }
 
 .header__link {
-  color: #ffffff;
+  color: #fffdf8;
   text-decoration: none;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
