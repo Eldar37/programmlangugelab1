@@ -3,7 +3,7 @@ import './Header.css';
 const links = [
   { label: 'Главная', href: '#home' },
   { label: 'Продукты', href: '#product' },
-  { label: 'О нас', href: '#about' },
+  { label: 'Автор', href: '#author' },
   { label: 'Контакты', href: '#contacts' },
 ];
 

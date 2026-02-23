@@ -54,6 +54,24 @@
   gap: 6px;
 }
 
+.home-card__single {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #3f2a10;
+}
+
+.content-editor {
+  background: #fffdfa;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(63, 42, 16, 0.12);
+}
+
+.content-editor h3 {
+  margin: 0 0 12px;
+}
+
 .list-detail {
   display: grid;
   grid-template-columns: minmax(260px, 340px) 1fr;
@@ -114,8 +132,97 @@
   color: #6d5740;
 }
 
+.crud-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.crud-card {
+  background: #fffdfa;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(63, 42, 16, 0.12);
+}
+
+.crud-card h3 {
+  margin: 0 0 12px;
+}
+
+.crud-form {
+  display: grid;
+  gap: 12px;
+}
+
+.crud-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: #5d4832;
+}
+
+.crud-form input,
+.crud-form textarea,
+.crud-form select {
+  width: 100%;
+  border: 1px solid #e3d2bb;
+  border-radius: 8px;
+  background: #fff7ec;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.crud-form textarea {
+  resize: vertical;
+}
+
+.crud-form input:focus,
+.crud-form textarea:focus,
+.crud-form select:focus {
+  outline: 2px solid #e5b57f;
+  outline-offset: 1px;
+}
+
+.crud-form__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.crud-button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ffffff;
+  background: #9a5f1f;
+}
+
+.crud-button:hover:not(:disabled) {
+  background: #7d4c18;
+}
+
+.crud-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.crud-button--danger {
+  background: #8e2e22;
+}
+
+.crud-button--danger:hover:not(:disabled) {
+  background: #6f251b;
+}
+
 @media (max-width: 760px) {
   .list-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .crud-panel {
     grid-template-columns: 1fr;
   }
 }
