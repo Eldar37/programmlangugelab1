@@ -22,6 +22,14 @@
   letter-spacing: 0.6px;
 }
 
+.header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .header__nav {
   display: flex;
   gap: 18px;
@@ -38,4 +46,29 @@
 
 .header__link:hover {
   border-color: #ffffff;
+}
+
+.header__auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.header__user {
+  font-size: 14px;
+  color: rgba(255, 253, 248, 0.88);
+}
+
+.header__button {
+  border: 1px solid rgba(255, 253, 248, 0.22);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fffdf8;
+  cursor: pointer;
+  background: rgba(255, 253, 248, 0.12);
+}
+
+.header__button:hover {
+  background: rgba(255, 253, 248, 0.2);
 }
