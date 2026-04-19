@@ -1,12 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  addLike,
+  addRating,
   addService,
   deleteService,
   selectActiveServiceId,
   selectServices,
   setActiveService,
   setServices,
+  toggleFavorite,
   updateService,
 } from '../../features/services/servicesSlice';
 import { fetchHomeContent } from '../../services/homeContentApi';
@@ -23,6 +26,8 @@ const EMPTY_BLOCK_FORM = {
   itemsText: '',
 };
 
+const RATING_OPTIONS = [1, 2, 3, 4, 5];
+
 const isValidServiceForm = (form) =>
   form.name.trim() && form.summary.trim() && form.details.trim();
 
@@ -31,6 +36,15 @@ const parseBlockItems = (value) =>
     .split('\n')
     .map((item) => item.trim())
     .filter(Boolean);
+
+const getAverageRating = (ratings = []) => {
+  if (!ratings.length) {
+    return null;
+  }
+
+  const total = ratings.reduce((sum, rating) => sum + rating, 0);
+  return (total / ratings.length).toFixed(1);
+};
 
 function HomeContent() {
   const dispatch = useDispatch();
@@ -85,6 +99,10 @@ function HomeContent() {
   const activeBlock = useMemo(() => {
     return contentBlocks.find((block) => block.id === activeBlockId) ?? null;
   }, [contentBlocks, activeBlockId]);
+
+  const activeItemAverageRating = activeItem
+    ? getAverageRating(activeItem.ratings)
+    : null;
 
   useEffect(() => {
     if (!activeItem) {
@@ -163,6 +181,35 @@ function HomeContent() {
     }
 
     dispatch(deleteService(activeItem.id));
+  };
+
+  const handleLike = () => {
+    if (!activeItem) {
+      return;
+    }
+
+    dispatch(addLike(activeItem.id));
+  };
+
+  const handleFavoriteToggle = () => {
+    if (!activeItem) {
+      return;
+    }
+
+    dispatch(toggleFavorite(activeItem.id));
+  };
+
+  const handleAddRating = (rating) => {
+    if (!activeItem) {
+      return;
+    }
+
+    dispatch(
+      addRating({
+        id: activeItem.id,
+        rating,
+      })
+    );
   };
 
   const handleBlockChange = (event) => {
@@ -298,6 +345,15 @@ function HomeContent() {
                   {item.name}
                 </button>
                 <span>{item.summary}</span>
+                <div className="list-detail__meta">
+                  <span>Лайки: {item.likes}</span>
+                  <span>
+                    {item.isFavorite ? 'В избранном' : 'Не в избранном'}
+                  </span>
+                  <span>
+                    Средняя оценка: {getAverageRating(item.ratings) ?? 'нет'}
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
@@ -308,6 +364,44 @@ function HomeContent() {
             <>
               <h4>{activeItem.name}</h4>
               <p>{activeItem.details}</p>
+              <div className="service-stats">
+                <span className="service-stat">Лайки: {activeItem.likes}</span>
+                <span className="service-stat">
+                  {activeItem.isFavorite ? 'В избранном' : 'Не в избранном'}
+                </span>
+                <span className="service-stat">
+                  Средняя оценка: {activeItemAverageRating ?? 'нет'}
+                </span>
+              </div>
+              <div className="service-actions">
+                <button className="crud-button" onClick={handleLike} type="button">
+                  Добавить Like
+                </button>
+                <button
+                  className="crud-button crud-button--secondary"
+                  onClick={handleFavoriteToggle}
+                  type="button"
+                >
+                  {activeItem.isFavorite
+                    ? 'Убрать из избранного'
+                    : 'Добавить в избранное'}
+                </button>
+              </div>
+              <div className="rating-panel">
+                <p>Добавить оценку объекту</p>
+                <div className="rating-panel__buttons">
+                  {RATING_OPTIONS.map((rating) => (
+                    <button
+                      className="rating-button"
+                      key={rating}
+                      onClick={() => handleAddRating(rating)}
+                      type="button"
+                    >
+                      {rating}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </>
           ) : (
             <p>Выберите элемент из списка.</p>

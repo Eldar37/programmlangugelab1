@@ -1,5 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const normalizeRating = (rating) => {
+  const numericRating = Number(rating);
+
+  if (!Number.isFinite(numericRating) || numericRating < 1 || numericRating > 5) {
+    return null;
+  }
+
+  return numericRating;
+};
+
+const normalizeService = (service) => ({
+  ...service,
+  likes: Number.isFinite(service.likes) ? service.likes : 0,
+  isFavorite: Boolean(service.isFavorite),
+  ratings: Array.isArray(service.ratings)
+    ? service.ratings
+        .map(normalizeRating)
+        .filter((rating) => rating !== null)
+    : [],
+});
+
 const initialState = {
   items: [],
   activeItemId: '',
@@ -10,7 +31,7 @@ const servicesSlice = createSlice({
   initialState,
   reducers: {
     setServices: (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.map(normalizeService);
 
       if (!state.items.some((item) => item.id === state.activeItemId)) {
         state.activeItemId = state.items[0]?.id ?? '';
@@ -20,8 +41,9 @@ const servicesSlice = createSlice({
       state.activeItemId = action.payload;
     },
     addService: (state, action) => {
-      state.items.push(action.payload);
-      state.activeItemId = action.payload.id;
+      const service = normalizeService(action.payload);
+      state.items.push(service);
+      state.activeItemId = service.id;
     },
     updateService: (state, action) => {
       const { id, changes } = action.payload;
@@ -39,6 +61,29 @@ const servicesSlice = createSlice({
         state.activeItemId = state.items[0]?.id ?? '';
       }
     },
+    addLike: (state, action) => {
+      const item = state.items.find((service) => service.id === action.payload);
+
+      if (item) {
+        item.likes += 1;
+      }
+    },
+    toggleFavorite: (state, action) => {
+      const item = state.items.find((service) => service.id === action.payload);
+
+      if (item) {
+        item.isFavorite = !item.isFavorite;
+      }
+    },
+    addRating: (state, action) => {
+      const { id, rating } = action.payload;
+      const item = state.items.find((service) => service.id === id);
+      const normalizedRating = normalizeRating(rating);
+
+      if (item && normalizedRating !== null) {
+        item.ratings.push(normalizedRating);
+      }
+    },
   },
 });
 
@@ -48,6 +93,9 @@ export const {
   addService,
   updateService,
   deleteService,
+  addLike,
+  toggleFavorite,
+  addRating,
 } = servicesSlice.actions;
 
 export const selectServices = (state) => state.services.items;
