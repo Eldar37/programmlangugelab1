@@ -6,34 +6,33 @@ function DocumentationPage() {
       <PageHeader
         eyebrow="Документация"
         title="Описание проекта"
-        text="Это краткая справка внутри приложения. Печатная документация на пять страниц хранится в docs/project-documentation.md."
+        text="Краткая справка по архитектуре IT Job Tracker. Полная версия для печати находится в docs/project-documentation.md."
       />
 
       <section className="panel docs">
         <div>
+          <h2>Назначение</h2>
+          <p>
+            IT Job Tracker помогает программисту вести список вакансий, сохранять интересные позиции, менять
+            статусы отклика и хранить заметки по каждому процессу найма.
+          </p>
+        </div>
+        <div>
           <h2>Redux архитектура</h2>
           <p>
-            Store настроен в src/redux/store.js. Для публикаций и авторов созданы отдельные slices
-            в src/redux/slices. Компоненты читают данные через useSelector и запускают actions через
-            useDispatch, вынесенные в небольшие hooks в src/hooks.
+            Store настроен через configureStore. Состояние разделено на jobsSlice и companiesSlice. Компоненты
+            читают данные через useSelector и запускают actions через useDispatch, вынесенные в локальные hooks.
           </p>
         </div>
         <div>
-          <h2>Асинхронный поток</h2>
+          <h2>Функциональность</h2>
           <ul>
-            <li>fetchPosts отправляет GET /posts и заполняет список публикаций.</li>
-            <li>createPost отправляет POST /posts и добавляет локальный элемент в начало списка.</li>
-            <li>updatePost отправляет PUT /posts/:id для API-публикаций и обновляет локальные записи тем же thunk.</li>
-            <li>deletePost отправляет DELETE /posts/:id для API-публикаций и удаляет запись из Redux.</li>
+            <li>fetchJobs загружает вакансии из REST API и нормализует их под IT-тематику.</li>
+            <li>createJob, updateJob и deleteJob реализуют CRUD вакансий через async thunk.</li>
+            <li>Фильтры работают по поиску, компании, статусу, формату и признаку сохраненной вакансии.</li>
+            <li>toggleJobSaved и setJobStatus меняют сохранение и статус отклика прямо в карточке.</li>
+            <li>addJobNote, updateJobNote и deleteJobNote реализуют CRUD заметок внутри Redux state.</li>
           </ul>
-        </div>
-        <div>
-          <h2>Состояния приложения</h2>
-          <p>
-            Состояния загрузки, ошибки и пустого списка отображаются на главной странице, в публикациях, создании,
-            редактировании и авторах. Поиск и фильтр по автору хранятся в Redux, поэтому состояние
-            интерфейса остается предсказуемым.
-          </p>
         </div>
       </section>
     </div>

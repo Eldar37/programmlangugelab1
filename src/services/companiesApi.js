@@ -1,7 +1,7 @@
 import { apiRequest } from './apiClient';
 
-export const usersApi = {
-  getUsers() {
+export const companiesApi = {
+  getCompanies() {
     return apiRequest('/users');
   },
 };

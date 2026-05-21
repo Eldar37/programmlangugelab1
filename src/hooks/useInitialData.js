@@ -1,32 +1,32 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from './useRedux';
 import {
-  fetchPosts,
-  selectPostsLoaded,
-  selectPostsLoading,
-} from '../redux/slices/postsSlice';
+  fetchJobs,
+  selectJobsLoaded,
+  selectJobsLoading,
+} from '../redux/slices/jobsSlice';
 import {
-  fetchUsers,
-  selectUsersLoaded,
-  selectUsersLoading,
-} from '../redux/slices/usersSlice';
+  fetchCompanies,
+  selectCompaniesLoaded,
+  selectCompaniesLoading,
+} from '../redux/slices/companiesSlice';
 
 export function useInitialData() {
   const dispatch = useAppDispatch();
-  const postsLoaded = useAppSelector(selectPostsLoaded);
-  const postsLoading = useAppSelector(selectPostsLoading);
-  const usersLoaded = useAppSelector(selectUsersLoaded);
-  const usersLoading = useAppSelector(selectUsersLoading);
+  const jobsLoaded = useAppSelector(selectJobsLoaded);
+  const jobsLoading = useAppSelector(selectJobsLoading);
+  const companiesLoaded = useAppSelector(selectCompaniesLoaded);
+  const companiesLoading = useAppSelector(selectCompaniesLoading);
 
   useEffect(() => {
-    if (!postsLoaded && !postsLoading) {
-      dispatch(fetchPosts());
+    if (!jobsLoaded && !jobsLoading) {
+      dispatch(fetchJobs());
     }
-  }, [dispatch, postsLoaded, postsLoading]);
+  }, [dispatch, jobsLoaded, jobsLoading]);
 
   useEffect(() => {
-    if (!usersLoaded && !usersLoading) {
-      dispatch(fetchUsers());
+    if (!companiesLoaded && !companiesLoading) {
+      dispatch(fetchCompanies());
     }
-  }, [dispatch, usersLoaded, usersLoading]);
+  }, [dispatch, companiesLoaded, companiesLoading]);
 }

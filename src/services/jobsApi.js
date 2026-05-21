@@ -1,25 +1,25 @@
 import { apiRequest } from './apiClient';
 
-export const postsApi = {
-  getPosts() {
+export const jobsApi = {
+  getJobs() {
     return apiRequest('/posts');
   },
 
-  createPost(post) {
+  createJob(job) {
     return apiRequest('/posts', {
       method: 'POST',
-      body: JSON.stringify(post),
+      body: JSON.stringify(job),
     });
   },
 
-  updatePost(id, post) {
+  updateJob(id, job) {
     return apiRequest(`/posts/${id}`, {
       method: 'PUT',
-      body: JSON.stringify(post),
+      body: JSON.stringify(job),
     });
   },
 
-  deletePost(id) {
+  deleteJob(id) {
     return apiRequest(`/posts/${id}`, {
       method: 'DELETE',
     });

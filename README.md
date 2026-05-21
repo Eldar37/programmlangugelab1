@@ -1,6 +1,6 @@
-# PostDesk
+# IT Job Tracker
 
-Финальный экзаменационный проект по React + Redux.
+Учебный React + Redux Toolkit проект: трекер вакансий для программистов.
 
 ## Стек
 
@@ -8,18 +8,21 @@
 - React Router
 - Redux Toolkit
 - React Redux
-- JSONPlaceholder REST API
+- JSONPlaceholder REST API как демо-источник данных
 
 ## Функциональность
 
-- 5 основных страниц: Главная, Публикации, Создать, Авторы, Документация
+- Вакансии для IT-специалистов
+- Поиск и фильтры по компании, статусу отклика, формату работы и сохраненным вакансиям
+- Сохраненные вакансии на отдельной странице
+- Статусы отклика: в планах, отклик отправлен, скрининг, интервью, оффер, отказ
+- CRUD вакансий: создание, просмотр, редактирование и удаление
+- CRUD заметок внутри карточки вакансии
 - Redux Toolkit store через `configureStore`
 - Slices через `createSlice`
 - Асинхронные операции через `createAsyncThunk`
-- GET, POST, PUT, DELETE запросы
-- CRUD для публикаций
-- Поиск и фильтр по автору
-- Состояния загрузки, ошибки и пустого списка
+- GET, POST, PUT и DELETE запросы
+- Loading, error и empty состояния
 - Печатная документация в `docs/project-documentation.md`
 
 ## Запуск
@@ -29,7 +32,7 @@ npm install
 npm start
 ```
 
-Приложение открывается на `http://localhost:5173`.
+Приложение открывается на `http://localhost:3000`.
 
 ## Сборка
 
@@ -37,25 +40,20 @@ npm start
 npm run build
 ```
 
-## Структура проекта
+## Основные маршруты
 
-```text
-src/
-  components/
-  hooks/
-  pages/
-  redux/
-    store.js
-    slices/
-  routes/
-  services/
-  utils/
-  App.js
-```
+- `/` - обзор трекера
+- `/jobs` - список вакансий и фильтры
+- `/jobs/new` - добавление вакансии
+- `/jobs/:jobId/edit` - редактирование вакансии и CRUD заметок
+- `/saved` - сохраненные вакансии
+- `/companies` - компании и рекрутеры
+- `/documentation` - краткая документация внутри приложения
 
 ## API
 
-Проект использует `https://jsonplaceholder.typicode.com`.
+Проект использует `https://jsonplaceholder.typicode.com` как учебный REST API.
+Данные `/posts` нормализуются в вакансии, а `/users` - в компании.
 
 - `GET /posts`
 - `POST /posts`
