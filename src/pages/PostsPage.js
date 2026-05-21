@@ -25,11 +25,11 @@ function PostsPage() {
     <div className="page">
       <PageHeader
         eyebrow="CRUD"
-        title="Posts"
-        text="Browse, search, create, update, and delete posts stored in Redux after requests to JSONPlaceholder."
+        title="Публикации"
+        text="Просмотр, поиск, создание, редактирование и удаление публикаций, которые хранятся в Redux после запросов к JSONPlaceholder."
         action={
           <Link className="button button--primary" to="/posts/new">
-            New post
+            Новая публикация
           </Link>
         }
       />
@@ -37,28 +37,28 @@ function PostsPage() {
       <PostFilters />
 
       {loading && posts.length === 0 && (
-        <StateBox title="Loading posts" text="Fetching posts from the API." type="loading" />
+        <StateBox title="Загрузка публикаций" text="Получаем публикации из API." type="loading" />
       )}
 
       {error && (
         <StateBox
-          title="Request error"
+          title="Ошибка запроса"
           text={error}
           type="error"
           action={
             <button className="button button--secondary" type="button" onClick={() => dispatch(fetchPosts())}>
-              Retry
+              Повторить
             </button>
           }
         />
       )}
 
       {!loading && !error && posts.length === 0 && (
-        <StateBox title="Empty state" text="There are no posts in the store." />
+        <StateBox title="Пустой список" text="В Redux store пока нет публикаций." />
       )}
 
       {!loading && !error && posts.length > 0 && filteredPosts.length === 0 && (
-        <StateBox title="Nothing found" text="Change search text or reset filters." />
+        <StateBox title="Ничего не найдено" text="Измените текст поиска или сбросьте фильтры." />
       )}
 
       {filteredPosts.length > 0 && (

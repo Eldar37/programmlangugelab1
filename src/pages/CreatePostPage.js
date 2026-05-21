@@ -33,21 +33,21 @@ function CreatePostPage() {
     <div className="page">
       <PageHeader
         eyebrow="POST"
-        title="Create post"
-        text="The form sends a POST request through createAsyncThunk and writes the response into Redux state."
+        title="Создание публикации"
+        text="Форма отправляет POST-запрос через createAsyncThunk и записывает ответ в Redux state."
       />
 
       {usersLoading && users.length === 0 && (
-        <StateBox title="Loading authors" text="Authors are loading before the form opens." type="loading" />
+        <StateBox title="Загрузка авторов" text="Авторы загружаются перед открытием формы." type="loading" />
       )}
 
-      {usersError && <StateBox title="Authors error" text={usersError} type="error" />}
-      {formError && <StateBox title="Create error" text={formError} type="error" />}
+      {usersError && <StateBox title="Ошибка авторов" text={usersError} type="error" />}
+      {formError && <StateBox title="Ошибка создания" text={formError} type="error" />}
 
       {users.length > 0 && (
         <PostForm
           users={users}
-          submitLabel="Create post"
+          submitLabel="Создать публикацию"
           isSubmitting={submitting}
           onSubmit={handleSubmit}
         />

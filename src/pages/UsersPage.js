@@ -16,18 +16,18 @@ function UsersPage() {
     <div className="page">
       <PageHeader
         eyebrow="GET"
-        title="Authors"
-        text="Authors are loaded from the users endpoint and connected with posts through userId."
+        title="Авторы"
+        text="Авторы загружаются из endpoint users и связываются с публикациями через поле userId."
       />
 
       {loading && users.length === 0 && (
-        <StateBox title="Loading authors" text="The app is requesting users from the API." type="loading" />
+        <StateBox title="Загрузка авторов" text="Приложение запрашивает пользователей из API." type="loading" />
       )}
 
-      {error && <StateBox title="Authors error" text={error} type="error" />}
+      {error && <StateBox title="Ошибка авторов" text={error} type="error" />}
 
       {!loading && !error && users.length === 0 && (
-        <StateBox title="No authors" text="The API returned an empty author list." />
+        <StateBox title="Авторов нет" text="API вернул пустой список авторов." />
       )}
 
       {users.length > 0 && (
@@ -41,7 +41,7 @@ function UsersPage() {
                 <p className="user-card__line">{user.email}</p>
                 <p className="user-card__line">{user.company?.name}</p>
                 <p className="user-card__line">
-                  <strong>{count}</strong> posts in current Redux state
+                  <strong>{count}</strong> публикаций в текущем Redux state
                 </p>
               </article>
             );

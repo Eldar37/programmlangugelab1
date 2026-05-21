@@ -9,24 +9,24 @@ function PostFilters() {
   const users = useAppSelector(selectUsers);
 
   return (
-    <section className="toolbar" aria-label="Post filters">
+    <section className="toolbar" aria-label="Фильтры публикаций">
       <label className="toolbar__field toolbar__field--wide">
-        <span className="label">Search</span>
+        <span className="label">Поиск</span>
         <input
           className="input"
           value={filters.search}
           onChange={(event) => dispatch(setSearchFilter(event.target.value))}
-          placeholder="Search by title or text"
+          placeholder="Поиск по заголовку или тексту"
         />
       </label>
       <label className="toolbar__field">
-        <span className="label">Author</span>
+        <span className="label">Автор</span>
         <select
           className="select"
           value={filters.userId}
           onChange={(event) => dispatch(setUserFilter(event.target.value))}
         >
-          <option value="all">All authors</option>
+          <option value="all">Все авторы</option>
           {users.map((user) => (
             <option key={user.id} value={user.id}>
               {user.name}
@@ -39,7 +39,7 @@ function PostFilters() {
         className="button button--secondary"
         onClick={() => dispatch(resetFilters())}
       >
-        Reset
+        Сбросить
       </button>
     </section>
   );

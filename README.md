@@ -1,8 +1,8 @@
 # PostDesk
 
-Final exam project for React + Redux.
+Финальный экзаменационный проект по React + Redux.
 
-## Stack
+## Стек
 
 - React
 - React Router
@@ -10,34 +10,34 @@ Final exam project for React + Redux.
 - React Redux
 - JSONPlaceholder REST API
 
-## Features
+## Функциональность
 
-- 5 main pages: Dashboard, Posts, Create, Authors, Docs
-- Redux Toolkit store with `configureStore`
-- Slices with `createSlice`
-- Async operations with `createAsyncThunk`
-- GET, POST, PUT, DELETE requests
-- CRUD for posts
-- Search and author filter
-- Loading, error, and empty states
-- Printable documentation in `docs/project-documentation.md`
+- 5 основных страниц: Главная, Публикации, Создать, Авторы, Документация
+- Redux Toolkit store через `configureStore`
+- Slices через `createSlice`
+- Асинхронные операции через `createAsyncThunk`
+- GET, POST, PUT, DELETE запросы
+- CRUD для публикаций
+- Поиск и фильтр по автору
+- Состояния загрузки, ошибки и пустого списка
+- Печатная документация в `docs/project-documentation.md`
 
-## Run
+## Запуск
 
 ```bash
 npm install
 npm start
 ```
 
-The app opens at `http://localhost:3000`.
+Приложение открывается на `http://localhost:5173`.
 
-## Build
+## Сборка
 
 ```bash
 npm run build
 ```
 
-## Project Structure
+## Структура проекта
 
 ```text
 src/
@@ -55,7 +55,7 @@ src/
 
 ## API
 
-The project uses `https://jsonplaceholder.typicode.com`.
+Проект использует `https://jsonplaceholder.typicode.com`.
 
 - `GET /posts`
 - `POST /posts`

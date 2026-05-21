@@ -39,28 +39,28 @@ function EditPostPage() {
     <div className="page">
       <PageHeader
         eyebrow="PUT"
-        title="Edit post"
-        text="Updating an API post sends a PUT request. Session-created posts use the same thunk and remain editable locally."
+        title="Редактирование публикации"
+        text="Редактирование API-публикации отправляет PUT-запрос. Публикации, созданные в текущей сессии, изменяются тем же thunk и остаются локальными."
         action={
           <Link className="button button--secondary" to="/posts">
-            Back to posts
+            Назад к публикациям
           </Link>
         }
       />
 
-      {loading && !post && <StateBox title="Loading post" text="Waiting for posts from the API." type="loading" />}
+      {loading && !post && <StateBox title="Загрузка публикации" text="Ожидаем публикации из API." type="loading" />}
 
       {!loading && !post && (
-        <StateBox title="Post not found" text="The requested post does not exist in Redux state." />
+        <StateBox title="Публикация не найдена" text="Запрошенной публикации нет в Redux state." />
       )}
 
-      {formError && <StateBox title="Update error" text={formError} type="error" />}
+      {formError && <StateBox title="Ошибка обновления" text={formError} type="error" />}
 
       {post && users.length > 0 && (
         <PostForm
           initialValues={post}
           users={users}
-          submitLabel="Save changes"
+          submitLabel="Сохранить изменения"
           isSubmitting={submitting}
           onSubmit={handleSubmit}
         />

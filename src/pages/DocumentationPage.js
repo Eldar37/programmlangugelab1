@@ -4,34 +4,35 @@ function DocumentationPage() {
   return (
     <div className="page">
       <PageHeader
-        eyebrow="Documentation"
-        title="Project explanation"
-        text="This page is a short in-app reference. The printable five-page documentation is stored in docs/project-documentation.md."
+        eyebrow="Документация"
+        title="Описание проекта"
+        text="Это краткая справка внутри приложения. Печатная документация на пять страниц хранится в docs/project-documentation.md."
       />
 
       <section className="panel docs">
         <div>
-          <h2>Redux architecture</h2>
+          <h2>Redux архитектура</h2>
           <p>
-            The store is configured in src/redux/store.js. Posts and users have separate slices in
-            src/redux/slices. Components read data with useSelector and start actions with useDispatch
-            through small hooks in src/hooks.
+            Store настроен в src/redux/store.js. Для публикаций и авторов созданы отдельные slices
+            в src/redux/slices. Компоненты читают данные через useSelector и запускают actions через
+            useDispatch, вынесенные в небольшие hooks в src/hooks.
           </p>
         </div>
         <div>
-          <h2>Async flow</h2>
+          <h2>Асинхронный поток</h2>
           <ul>
-            <li>fetchPosts sends GET /posts and fills the post list.</li>
-            <li>createPost sends POST /posts and adds a local item to the top of the list.</li>
-            <li>updatePost sends PUT /posts/:id for API posts and updates local posts in the same thunk.</li>
-            <li>deletePost sends DELETE /posts/:id for API posts and removes the item from Redux.</li>
+            <li>fetchPosts отправляет GET /posts и заполняет список публикаций.</li>
+            <li>createPost отправляет POST /posts и добавляет локальный элемент в начало списка.</li>
+            <li>updatePost отправляет PUT /posts/:id для API-публикаций и обновляет локальные записи тем же thunk.</li>
+            <li>deletePost отправляет DELETE /posts/:id для API-публикаций и удаляет запись из Redux.</li>
           </ul>
         </div>
         <div>
-          <h2>Application states</h2>
+          <h2>Состояния приложения</h2>
           <p>
-            Loading, error, and empty states are displayed on dashboard, posts, create, edit, and authors pages.
-            Search and author filters are stored in Redux so UI state is predictable.
+            Состояния загрузки, ошибки и пустого списка отображаются на главной странице, в публикациях, создании,
+            редактировании и авторах. Поиск и фильтр по автору хранятся в Redux, поэтому состояние
+            интерфейса остается предсказуемым.
           </p>
         </div>
       </section>

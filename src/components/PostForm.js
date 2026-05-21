@@ -10,19 +10,19 @@ function validate(values) {
   const errors = {};
 
   if (!values.title.trim()) {
-    errors.title = 'Title is required.';
+    errors.title = 'Введите заголовок.';
   }
 
   if (values.title.trim().length > 120) {
-    errors.title = 'Title must be 120 characters or shorter.';
+    errors.title = 'Заголовок должен быть не длиннее 120 символов.';
   }
 
   if (!values.body.trim()) {
-    errors.body = 'Text is required.';
+    errors.body = 'Введите текст публикации.';
   }
 
   if (!Number(values.userId)) {
-    errors.userId = 'Choose an author.';
+    errors.userId = 'Выберите автора.';
   }
 
   return errors;
@@ -70,7 +70,7 @@ function PostForm({ initialValues, users, submitLabel, isSubmitting, onSubmit })
   return (
     <form className="form panel" onSubmit={handleSubmit}>
       <label className="form__field">
-        <span className="label">Author</span>
+        <span className="label">Автор</span>
         <select
           className="select"
           name="userId"
@@ -87,32 +87,32 @@ function PostForm({ initialValues, users, submitLabel, isSubmitting, onSubmit })
       </label>
 
       <label className="form__field">
-        <span className="label">Title</span>
+        <span className="label">Заголовок</span>
         <input
           className="input"
           name="title"
           value={values.title}
           onChange={handleChange}
-          placeholder="Post title"
+          placeholder="Заголовок публикации"
         />
         {errors.title && <p className="form__error">{errors.title}</p>}
       </label>
 
       <label className="form__field">
-        <span className="label">Text</span>
+        <span className="label">Текст</span>
         <textarea
           className="textarea"
           name="body"
           value={values.body}
           onChange={handleChange}
-          placeholder="Post text"
+          placeholder="Текст публикации"
         />
         {errors.body && <p className="form__error">{errors.body}</p>}
       </label>
 
       <div className="button-row">
         <button type="submit" className="button button--primary" disabled={isSubmitting}>
-          {isSubmitting ? 'Saving...' : submitLabel}
+          {isSubmitting ? 'Сохранение...' : submitLabel}
         </button>
       </div>
     </form>

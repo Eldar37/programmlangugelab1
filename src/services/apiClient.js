@@ -18,7 +18,7 @@ export async function apiRequest(path, options = {}) {
   });
 
   if (!response.ok) {
-    throw new ApiError(`API request failed with status ${response.status}`, response.status);
+    throw new ApiError(`Ошибка API. Статус ответа: ${response.status}`, response.status);
   }
 
   if (response.status === 204) {

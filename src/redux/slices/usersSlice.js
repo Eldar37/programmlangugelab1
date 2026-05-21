@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 };
 
-const getMessage = (error) => error?.message || 'Users request failed.';
+const getMessage = (error) => error?.message || 'Не удалось загрузить авторов.';
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejectWithValue }) => {
   try {

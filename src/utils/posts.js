@@ -29,7 +29,7 @@ export function getPostExcerpt(body, maxLength = 150) {
 
 export function getUserName(users, userId) {
   const user = users.find((item) => Number(item.id) === Number(userId));
-  return user ? user.name : `Author #${userId}`;
+  return user ? user.name : `Автор #${userId}`;
 }
 
 export function wait(ms) {

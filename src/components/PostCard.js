@@ -14,14 +14,14 @@ function PostCard({ post }) {
     <article className="post-card">
       <div className="post-card__meta">
         <span>{getUserName(users, post.userId)}</span>
-        <span>Post #{post.id}</span>
-        {post.isLocal && <span className="badge badge--local">Local</span>}
+        <span>Публикация #{post.id}</span>
+        {post.isLocal && <span className="badge badge--local">Локально</span>}
       </div>
       <h2 className="post-card__title">{post.title}</h2>
       <p className="post-card__body">{getPostExcerpt(post.body)}</p>
       <div className="button-row">
         <Link className="button button--secondary" to={`/posts/${post.id}/edit`}>
-          Edit
+          Редактировать
         </Link>
         <button
           type="button"
@@ -29,7 +29,7 @@ function PostCard({ post }) {
           disabled={isDeleting}
           onClick={() => dispatch(deletePost(post.id))}
         >
-          {isDeleting ? 'Deleting...' : 'Delete'}
+          {isDeleting ? 'Удаление...' : 'Удалить'}
         </button>
       </div>
     </article>

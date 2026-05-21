@@ -25,53 +25,53 @@ function DashboardPage() {
   return (
     <div className="page">
       <PageHeader
-        eyebrow="Overview"
-        title="PostDesk dashboard"
-        text="A React application with Redux Toolkit, async thunks, REST API integration, CRUD operations, filtering, and explicit application states."
+        eyebrow="Обзор"
+        title="Панель PostDesk"
+        text="React-приложение с Redux Toolkit, асинхронными thunk-запросами, REST API, CRUD-операциями, фильтрацией и явными состояниями интерфейса."
         action={
           <Link className="button button--primary" to="/posts/new">
-            Create post
+            Создать публикацию
           </Link>
         }
       />
 
       <section className="metrics-grid">
-        <MetricCard label="Total posts" value={stats.total} hint="Loaded from JSONPlaceholder" />
-        <MetricCard label="Remote posts" value={stats.remote} hint="Original API data" />
-        <MetricCard label="Local posts" value={stats.local} hint="Created during this session" />
-        <MetricCard label="Authors" value={stats.authors} hint="Based on userId field" />
+        <MetricCard label="Всего публикаций" value={stats.total} hint="Загружены из JSONPlaceholder" />
+        <MetricCard label="API-публикации" value={stats.remote} hint="Исходные данные сервера" />
+        <MetricCard label="Локальные" value={stats.local} hint="Созданы в текущей сессии" />
+        <MetricCard label="Авторы" value={stats.authors} hint="Подсчет по полю userId" />
       </section>
 
       {loading && posts.length === 0 && (
-        <StateBox title="Loading posts" text="The app is requesting data from the REST API." type="loading" />
+        <StateBox title="Загрузка публикаций" text="Приложение запрашивает данные из REST API." type="loading" />
       )}
 
       {error && (
         <StateBox
-          title="Data loading error"
+          title="Ошибка загрузки данных"
           text={error}
           type="error"
           action={
             <button className="button button--secondary" type="button" onClick={() => dispatch(fetchPosts())}>
-              Retry
+              Повторить
             </button>
           }
         />
       )}
 
       {!loading && !error && posts.length === 0 && (
-        <StateBox title="No posts yet" text="Create the first post to fill the dashboard." />
+        <StateBox title="Публикаций пока нет" text="Создайте первую публикацию, чтобы заполнить главную страницу." />
       )}
 
       {latestPosts.length > 0 && (
         <section className="page">
           <div className="page-header">
             <div>
-              <h2 className="panel__title">Latest posts</h2>
-              <p className="page-header__text">Recent items from the Redux store.</p>
+              <h2 className="panel__title">Последние публикации</h2>
+              <p className="page-header__text">Недавние элементы из Redux store.</p>
             </div>
             <Link className="button button--secondary" to="/posts">
-              View all
+              Смотреть все
             </Link>
           </div>
           <div className="post-grid">

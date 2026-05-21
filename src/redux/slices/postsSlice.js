@@ -18,7 +18,7 @@ const initialState = {
   lastSync: null,
 };
 
-const getMessage = (error) => error?.message || 'Request failed. Please try again.';
+const getMessage = (error) => error?.message || 'Запрос не выполнен. Попробуйте еще раз.';
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (_, { rejectWithValue }) => {
   try {
@@ -60,7 +60,7 @@ export const updatePost = createAsyncThunk(
       const currentPost = selectPostById(getState(), id);
 
       if (!currentPost) {
-        return rejectWithValue('Post was not found.');
+        return rejectWithValue('Публикация не найдена.');
       }
 
       const nextPost = normalizePost({
